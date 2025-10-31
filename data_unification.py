@@ -28,6 +28,9 @@ def unify_olist_data():
     tmp_df = pd.read_csv( 'olist_sellers_dataset.csv')
     olist = pd.merge(olist, tmp_df, 'left', 'seller_id')
 
+    tmp_df = pd.read_csv( 'product_category_name_translation.csv')
+    olist = pd.merge(olist, tmp_df, 'left', 'product_category_name')
+
     print('Data unified.')
 
     cwd = 'C:/Users/lucas/OneDrive/Área de Trabalho/Lucas/Projetos/E-commerce_reviews_classification'
