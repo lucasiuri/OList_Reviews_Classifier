@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Customer Satisfaction Prediction</title>
+        <style>
+            body {font-family: Arial, sans-serif; margin: 40px;}
+            form {max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;}
+            label {display: block; margin-bottom: 8px;}
+            input, select {width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ddd; box-sizing: border-box;}
+            button {background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;}
+            button:hover {background-color: #45A049;}
+        </style>
+    </head>
+    <body>
+        <h2>Predict Customer Review Score</h2>
+        <form action="{{ url_for('predict')  }}" method="post">
+            <h3>Order and Payment Details</h3>
+            <label for="price">Price:</label>
+            <input type="number" step="0.01" id="price" name="price" value="100.00" required>
+
+            <label for="freight_value">Freight Value:</label>
+            <input type="number" step="0.01" id="freight_value" name="freight_value" value="15.00" required>
+
+            <label for="payment_installments">Payment Installments:</label>
+            <input type="number" id="payment_installments" name="payment_installments" value="1" required>
+
+            <label for="payment_value">Total Payment Value:</label>
+            <input type="number" step="0.01" id="payment_value" name="payment_value" value="115.00" required>
+
+            <label for="payment_type">Payment Type:</label>
+            <select id="payment_type" name="payment_type">
+                <option value="credit_card">Credit Card</option>
+                <option value="boleto">Boleto</option>
+                <option value="Voucher">Voucher</option>
+                <option value="debit_card">Debit Card</option>
+                <option value="unknown">Unknown</option>
+            </select>
+
+            <h3>Product Details</h3>
+            <label for="product_name_lenght">Product Name Length:</label>
+            <input type="number" id="product_name_lenght" name="product_name_lenght" value="40" required>
+
+            <label for="product_description_lenght">Product Description Length:</label>
+            <input type="number" id="product_description_lenght" name="product_description_lenght" value="500" required>
+
+            <label for="product_photos_qty">Number of Photos:</label>
+            <input type="number" id="product_photos_qty" name="product_photos_qty" value="2" required>
+
+            <label for="product_weight_g">Product Weight (grams)</label>
+            <input type="number" id="product_weight_g" name="product_weight_g" value="500" required>
+
+            <label for="product_category_name_english">Product Category:</label>
+            <input type="text" id="product_category_name_english" name="product_category_name_english" value="health_beauty" required>
+
+            <label for="product_volume_cm3">Product Volume (cm³):</label>
+            <input type="number" id="product_volume_cm3" name="product_volume_cm3" value="1000" required>
+
+            <h3>Customer and Delivery Details</h3>
+            <label for="customer_state">Customer State (e.g. SP, RJ):</label>
+            <input type="text" id="customer_state" name="customer_state" value="SP" required>
+
+            <h3>Calculated Delivery Metrics (for demonstration)</h3>
+            <label for="delivery_delta">Delivery Delta (Actual - Estimated days):</label>
+            <input type="number" id="delivery_delta" name="delivery_delta" value="-5" required>
+
+            <label for="processing_time">Processing Time (days):</label>
+            <input type="number" id="processing_time" name="processing_time" value="2" required>
+
+            <label for="shipping_time">Shipping Time (days):</label>
+            <input type="number" id="shipping_time" name="shipping_time" value="7" required>
+
+            <br><br>
+            <button type="submit">Predict Score</button>
+        </form>
+    </body>
+</html>

@@ -21,7 +21,7 @@ def predict():
     try:
         numerical_values = {k: float(v) for k,v in form_data.items() if k not in ['payment_type', 'customer_state', 'product_category_name_english']}
 
-        all_values = {**numerical_values, **{k: v for k,v in form_data.items() if k not in ['payment_type', 'customer_state', 'product_category_name_english']}}
+        all_values = {**numerical_values, **{k: v for k,v in form_data.items() if k in ['payment_type', 'customer_state', 'product_category_name_english']}}
 
         input_df = pd.DataFrame([all_values])
 
